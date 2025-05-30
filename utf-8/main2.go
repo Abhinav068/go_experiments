@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"reflect"
 	"unicode/utf8"
 )
 
@@ -23,7 +24,7 @@ func main2() {
 	fmt.Printf("reconversion %s\n", string([]rune(s)))
 	fmt.Println(string(65)) // "A", not "65"
 	fmt.Println(string(0x4eac))
-	fmt.Println(string(1234567))// invalid rune
+	fmt.Println(string(1234567)) // invalid rune
 }
 
 func Contains(s, substr string) bool {
@@ -52,10 +53,25 @@ func runeHandle() {
 		fmt.Printf("%d\t%c\n", i, r)
 		i += size
 	}
-	
+
 	// OR
 
 	for i, r := range s {
 		fmt.Printf("%d\t%q\t%d\n", i, r, r)
 	}
+}
+
+func checkType() {
+	str := "abcd"
+
+	for _, s := range str {
+		tp := reflect.TypeOf(s)
+		fmt.Printf("type of i: %v\n", tp)
+	}
+	fmt.Printf("\nkya soche ho..!!!!!\n\n")
+	for i := 0; i < len(str); i++ {
+		tp := reflect.TypeOf(str[i])
+		fmt.Printf("type of i: %v\n", tp)
+	}
+
 }

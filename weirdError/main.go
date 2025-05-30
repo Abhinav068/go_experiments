@@ -30,6 +30,8 @@ func someFunc(abh Abhinav) {
 	} else {
 		log.Print("abh is not nil. Value is :", abh)
 	}
+	//* this happens because abh is interface and the value that was passed was pointer type. So this make the type of 'abh' interface as *int and value in nil.
+	//* And in golang, for an interface to be nil, both its types and value should be nil. 
 }
 
 // uncomment the following function; ie. pointer to interface
