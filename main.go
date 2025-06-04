@@ -5,17 +5,17 @@ import (
 	"reflect"
 )
 
-func main() {
-	str := "abcd"
 
-	for _, s := range str {
-		tp := reflect.TypeOf(s)
-		fmt.Printf("type of i: %v\n", tp)
-	}
-	fmt.Printf("\nkya soche ho..!!!!!\n\n")
-	for i := 0; i < len(str); i++ {
-		tp := reflect.TypeOf(str[i])
-		fmt.Printf("type of i: %v\n", tp)
-	}
+
+func main() {
+	// symbol := []int{0: 2, 3: 9, 2: 22, 4: 44}
+	symbol := []int{0: 2, 3: 9, 8: 22, 4: 44}
+	test(symbol)
+	fmt.Printf("numbers: %v", symbol)
+	fmt.Printf("string: %v", reflect.TypeOf(symbol[2:5]))
+}
+
+func test(integers []int){
+	integers[3]=41
 
 }
