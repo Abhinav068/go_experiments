@@ -9,27 +9,7 @@ import (
 	"unicode/utf8"
 )
 
-func test(integers []int) {
-	integers[3] = 41
-}
-
-type a []string
-
-// func main() {
-// 	// symbol := []int{0: 2, 3: 9, 2: 22, 4: 44}
-// 	symbol := []int{0: 2, 3: 9, 8: 22, 4: 44}
-// 	test(symbol)
-// 	fmt.Printf("numbers: %v", symbol)
-// 	fmt.Printf("string: %v\n", reflect.TypeOf(symbol[2:5]))
-
-// 	// input array of numbers and find the length logest fibonacchi subsequece
-// 	// febb seq can start from two terms
-// 	// [3, 7, 8, 10, 15, 23] --> [7,8,15,23]
-// 	// 1 1 2 3 5 8
-// 	// contiguous
-// }
-
-func main() {
+func countrunes() {
 	counts := make(map[rune]int)    // counts of Unicode characters
 	var utflen [utf8.UTFMax + 1]int // count of lengths of UTF-8 encodings
 	invalid := 0                    // count of invalid UTF-8 characters
@@ -65,19 +45,42 @@ func main() {
 	}
 }
 
-// To interact with this Go code, you'll need to:
+// To interact with this countrunes Go code, you'll need to:
 
 // Save the code to a file with a .go extension, for example charcount.go
 // Run the program by opening a terminal and typing:
-// go run charcount.go
+//? go run charcount.go
 
 // Provide input in one of these ways:
 // 1. Type text directly and press Ctrl+D (Unix/Linux/Mac) or Ctrl+Z followed by Enter (Windows) to signal the end of input
 // 2. Pipe a file into the program:
-// 		cat myfile.txt | go run charcount.go
+//? 		cat myfile.txt | go run charcount.go
 
 // 3. Redirect a file as input:
-// 		go run charcount.go < myfile.txt
+//? 		go run charcount.go < myfile.txt
 
+func main() {
+	// Adding edges to build a simple directed graph
+	addEdge("A", "B")
+	addEdge("A", "C")
+	addEdge("B", "C")
+	addEdge("B", "D")
+	addEdge("C", "D")
+	addEdge("D", "A") // Creates a cycle
 
+	// Test edge existence
+	fmt.Println("Edge from A to B:", hasEdge("A", "B")) // true
+	fmt.Println("Edge from A to D:", hasEdge("A", "D")) // false
+	fmt.Println("Edge from C to D:", hasEdge("C", "D")) // true
+	fmt.Println("Edge from D to C:", hasEdge("D", "C")) // false
 
+	// Print the entire graph structure
+	fmt.Println("\nGraph structure:")
+	for node, edges := range graph {
+		fmt.Printf("Node %s connects to: ", node)
+		for target := range edges {
+			fmt.Printf("%s ", target)
+		}
+		fmt.Println()
+	}
+}
