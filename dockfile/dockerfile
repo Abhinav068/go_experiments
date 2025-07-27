@@ -1,0 +1,21 @@
+# Use official Golang image as base
+FROM golang:1.21-alpine
+
+# Set working directory inside container
+WORKDIR /app
+
+# Copy source code into container
+COPY . .
+
+# Download dependencies (optional if you're using Go modules)
+RUN go mod init example.com/myapp
+RUN go mod tidy
+
+# Build the Go app
+RUN go build -o server .
+
+# Expose the port the app runs on
+EXPOSE 8080
+
+# Command to run the app
+CMD ["./server"]
