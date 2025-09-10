@@ -6,7 +6,7 @@ import (
     "log"
     "net/http"
 
-    userpb "example.com/myapp/rpc/user"
+    userpb "twirp/example.com/myapp/rpc/user"
 )
 
 // In-memory database
