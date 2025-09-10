@@ -1,29 +1,46 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
-	"net/http"
 )
 
-func main() {
-	http.HandleFunc("/set", cacheFn)
-	// http.HandleFunc("/get", getFn)
-	http.ListenAndServe(":8888", nil)
-}
-func cacheFn(res http.ResponseWriter, req *http.Request) {
-	var kv struct {
-		Key string `json:"key"`
-		Val string `json:"val"`
-		Exp int64  `json:"exp"`
-	}
-	err := json.NewDecoder(req.Body).Decode(&kv)
-	if err != nil {
-		http.Error(res, err.Error(), http.StatusBadRequest)
-		return
+func main1() {
+	var fns []func()
+	var ints = []int{3, 4, 5, 6, 8}
+	// var integer int
+	for _, val := range ints {
+		// integer = val
+		fns = append(fns, func() {
+			fmt.Println(val)
+		})
 	}
 
-	fmt.Println(kv)
-	val, _ := json.Marshal(kv)
-	res.Write(val)
+	for _, fn := range fns {
+		fn()
+	}
+}
+func main() {
+	print(decode("132124\n9812\n121212"))
+}
+
+func decode(str string) string {
+
+	conv := func(l string) string {
+		if len(l) == 2 {
+			return string(byte('a' + (10 * (l[0] - '1' + 1)) + (l[1] - '1')))
+		}
+		return string(byte('a' + (l[0] - '1')))
+	}
+
+	var s string
+	for i := len(str) - 1; i >= 0; i-- {
+		if str[i] == '\n' {
+			s = conv(str[i-2:i]) + s
+			i -= 2
+			continue
+		}
+		s = conv(string(str[i])) + s
+
+	}
+	return s + "\n"
 }
