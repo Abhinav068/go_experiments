@@ -19,10 +19,31 @@ func main1() {
 		fn()
 	}
 }
-func main() {
-	print(decode("132124\n9812\n121212"))
+
+type myMapType map[string]int
+
+func main2() {
+	mymap := myMapType{"": 0, "b": 2}
+	fmt.Println(mymap, "len: ", len(mymap))
+	p := &Person{}
+	// p.SetName("Alice") // ❌ can't call pointer method on value
+	fmt.Printf("%+v", p)
+
 }
 
+type Person struct {
+	Name string
+}
+
+func (p *Person) SetName(name string) {
+	p.Name = name
+}
+
+type myType interface {
+	SetName(name string)
+}
+
+// print(decode("132124\n9812\n121212"))
 func decode(str string) string {
 
 	conv := func(l string) string {
@@ -43,4 +64,20 @@ func decode(str string) string {
 
 	}
 	return s + "\n"
+}
+
+func changeMap(m map[string]int) {
+	m["a"] = 1
+	// delete(m, "b")
+}
+func changeSlice(s []int) {
+	s[0] = 100
+}
+
+func sum() (k int) {
+	return k
+}
+
+func main(){
+	fmt.Println(2^4)
 }

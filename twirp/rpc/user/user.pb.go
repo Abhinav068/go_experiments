@@ -233,7 +233,8 @@ const file_user_proto_rawDesc = "" +
 	"\vUserService\x12?\n" +
 	"\n" +
 	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x18.user.CreateUserResponse\x126\n" +
-	"\aGetUser\x12\x14.user.GetUserRequest\x1a\x15.user.GetUserResponseB\x1cZ\x1aexample.com/myapp/rpc/userb\x06proto3"
+	"\aGetUser\x12\x14.user.GetUserRequest\x1a\x15.user.GetUserResponseB\n" +
+	"Z\brpc/userb\x06proto3"
 
 var (
 	file_user_proto_rawDescOnce sync.Once

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package user;
 
-option go_package = "example.com/myapp/rpc/user";
+option go_package = "rpc/user";
 
 // Service definition
 service UserService {

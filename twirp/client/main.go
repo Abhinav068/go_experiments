@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	userpb "twirp/example.com/myapp/rpc/user"
+	userpb "twirp/rpc/user"
 )
 
 func main() {
