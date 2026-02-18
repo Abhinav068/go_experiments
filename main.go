@@ -78,6 +78,3 @@ func sum() (k int) {
 	return k
 }
 
-func main(){
-	fmt.Println(2^4)
-}
